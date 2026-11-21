@@ -10,6 +10,16 @@
   <title>WAT Neubau</title>
 
   <link rel="shortcut icon" href="favicon.ico">
+  <script>
+    function onHumanVerified(token) {
+      console.log('flotest human');
+      // // Your own email deobfuscation function
+      // document.querySelectorAll('[data-obfuscated-email]')
+      //   .forEach(decodeEmail);
+    }
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer>
+  </script>
 
   <style>
     :root {
@@ -434,6 +444,9 @@
   </header>
 
   <main id="main">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAGLyjf8GkrDZ4ULa" data-size="invisible"
+      data-callback="onHumanVerified"> </div>
+
 
     <!-- HERO -->
 
@@ -836,7 +849,7 @@
           <p>
             Um unsere auf der Website veröffentlichten E-Mail-Adressen
             vor automatisiertem Auslesen durch Bots und Spam zu schützen,
-            verwenden wir die Funktion "Email Address Obfuscation"
+            verwenden wir die Funktion "Turnstile widget"
             von Cloudflare.
           </p>
 
