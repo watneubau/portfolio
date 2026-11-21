@@ -11,11 +11,32 @@
 
   <link rel="shortcut icon" href="favicon.ico">
   <script>
+    function decodeEmail(element) {
+      const encoded = element.dataset.obfuscatedEmail;
+      if (!encoded) return;
+
+      const bytes = new Uint8Array(
+        encoded.match(/.{1,2}/g).map(byte => parseInt(byte, 16))
+      );
+
+      const key = new TextEncoder().encode('watsuperstar');
+
+      for (let i = 0; i < bytes.length; i++) {
+        bytes[i] ^= key[i % key.length];
+      }
+
+      const email = new TextDecoder().decode(bytes);
+
+      element.textContent = email;
+
+      if (element.tagName === "A") {
+        element.href = "mailto:" + email;
+      }
+    }
+
     function onHumanVerified(token) {
-      console.log('flotest human');
-      // // Your own email deobfuscation function
-      // document.querySelectorAll('[data-obfuscated-email]')
-      //   .forEach(decodeEmail);
+      document.querySelectorAll("[data-obfuscated-email]")
+        .forEach(decodeEmail);
     }
   </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer>
@@ -631,7 +652,7 @@
                 Jeder Dienstag (ausgenommen Schulferien und schulautonome Tage) von 19:00 - 21:00 Uhr in Wien Neubau
               </p>
 
-              <a href="mailto:turnen@watneubau.at">Schreib uns ein E-Mail →</a>
+              <a data-obfuscated-email="0314061d101e250512000f17020315065b1111">Schreib uns ein E-Mail →</a>
             </div>
 
           </article>
@@ -669,7 +690,7 @@
                   wieder jemanden suchen!</i>
               </p>
 
-              <a href="mailto:volleyball@watneubau.at">Schreib uns ein E-Mail →</a>
+              <a data-obfuscated-email="010e181f100907131f18210516151a16001204075d1515">Schreib uns ein E-Mail →</a>
             </div>
 
           </article>
@@ -697,8 +718,8 @@
 
           <p>
             <strong>E-Mail</strong><br>
-            <a href="mailto:office@watneubau.at">
-              office@watneubau.at
+            <a data-obfuscated-email="1807121a1615250512000f17020315065b1111">
+              Lade...
             </a>
           </p>
 
@@ -749,8 +770,8 @@
             <br>
             <strong>Vereinssitz:</strong> Zieglergasse 21, 1070 Wien<br>
             <strong>Email:</strong>
-            <a href="office@watneubau.at">
-              office@watneubau.at
+            <a data-obfuscated-email="1807121a1615250512000f17020315065b1111">
+              Lade...
             </a>
             <br>
             <strong>ZVR.Nr.:</strong> 963316055
