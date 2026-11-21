@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Discover our sports groups, activities and community.">
+
+  <title>WAT Neubau – Sports & Community</title>
+
+  <style>
+    :root {
+      --red: #ed1c24;
+      --red-dark: #c81019;
+      --dark: #202124;
+      --gray: #666;
+      --light: #f5f5f5;
+      --white: #ffffff;
+      --border: #e5e5e5;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--red-dark);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(90%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 10px;
+      background: var(--white);
+      padding: 12px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* HEADER */
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: block;
+      width: 85px;
+      height: auto;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    /* HERO */
+
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border: 55px solid var(--red);
+      border-radius: 50%;
+      right: -120px;
+      top: -100px;
+      opacity: 0.8;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      color: #ff6469;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      margin: 18px 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #dedede;
+      max-width: 550px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 14px 26px;
+      margin-top: 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--red-dark);
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 85px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 8px 0 12px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+    }
+
+    .section-label {
+      color: var(--red-dark);
+      font-weight: bold;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* SPORTS GROUPS */
+
+    .groups {
+      background: var(--light);
+    }
+
+    .group-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .group-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .group-visual {
+      height: 190px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .group-card:nth-child(2) .group-visual {
+      background: var(--dark);
+    }
+
+    .group-content {
+      padding: 30px;
+    }
+
+    .group-content h3 {
+      font-size: 24px;
+      margin: 0 0 12px;
+    }
+
+    .group-content p {
+      color: var(--gray);
+    }
+
+    .group-content a {
+      display: inline-block;
+      margin-top: 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .group-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* ABOUT */
+
+    .about {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-content {
+      max-width: 760px;
+    }
+
+    .about-content p {
+      color: var(--gray);
+      font-size: 17px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .contact .section-label {
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      margin-top: 8px;
+    }
+
+    .contact p {
+      color: #fff;
+    }
+
+    .contact-details {
+      padding-top: 20px;
+    }
+
+    .contact-details p {
+      margin-bottom: 22px;
+    }
+
+    .contact a {
+      color: var(--white);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 50px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 35px;
+    }
+
+    footer h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    footer p {
+      color: #c7c7c7;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #454545;
+      padding-top: 20px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        padding: 18px 0;
+        gap: 15px;
+      }
+
+      nav ul {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      .hero::after {
+        opacity: 0.25;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .group-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        gap: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header>
+    <div class="container header-inner">
+
+      <a href="#" aria-label="WAT Neubau – Home">
+        <img src="logo.jpg" alt="WAT Neubau logo" class="logo">
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#groups">Sportgruppen</a></li>
+          <li><a href="#history">Geschichte</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="#imprint">Impressum</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="eyebrow">Sport · Spaß · Verbundenheit</span>
+
+        <h1>Gemeinsam bewegen.<br>Zusammen wachsen.</h1>
+
+        <p>
+          Willkommen beim WAT Neubau - dem Verein für Sportbegeisterte
+        </p>
+
+        <a href="#groups" class="button">Entdecke unsere Sportgruppen</a>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="container about-content">
+
+        <span class="section-label">Wer wir sind</span>
+
+        <h2>Mehr als nur Sport.</h2>
+
+        <p>
+
+          Der WAT-Neubau ist Mitgliedsverein des ASKÖ-Landesverband WAT. Der Verband vereint mehr als 80 Wiener
+          Sportvereine und ist somit ein großer und wichtiger Allround-Sportanbieter in Wien.
+          Der ASKÖ Landesverband WAT und seine Vereine sind Non-Profit Organisationen und als solchen ist es uns
+          wichtig, allen Menschen die Möglichkeit zu bieten, sich nach ihren Fähigkeiten, Bedürfnissen und Wünschen zu
+          einem leistbaren Preis sportlich zu betätigen.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- SPORTS GROUPS -->
+
+    <section class="groups" id="groups">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-label">Finde dein Team</span>
+          <h2>Unsere Sportgruppen</h2>
+          <p>
+            Die Gruppen des WAT Neubau.
+          </p>
+        </div>
+
+        <div class="group-grid">
+
+          <article class="group-card">
+
+            <div class="group-visual" aria-hidden="true">
+              Gymnastik
+            </div>
+
+            <div class="group-content">
+              <span class="section-label">Sportgruppe 1</span>
+
+              <h3>Musikgymnastik</h3>
+
+
+              <p>
+                In freundschaftlicher und familiärer Atmosphäre bieten wir Bewegung als beste Medizin. Bewegung schadet keiner Altersklasse! Im Gegenteil, körperliches Training vermag den Alterungsprozess zu bremsen und die Leistungsfähigkeit zu steigern. Außerdem wird auch deine Koordination gefördert. Die Intensität bestimmst sowieso nur du selbst!
+              </p>
+
+              <p>
+                <strong>Training:</strong>
+                Jeder Dienstag (ausgenommen Schulferien und schulautonome Tage) von 19:00 - 21:00 Uhr
+              </p>
+
+              <a href="#contact">Kontaktiere uns →</a>
+            </div>
+
+          </article>
+
+          <article class="group-card">
+
+            <div class="group-visual" aria-hidden="true">
+              Volleyball
+            </div>
+
+            <div class="group-content">
+              <span class="section-label">Sportgruppe 2</span>
+
+              <h3>Hallenvolleyball</h3>
+
+              <p>
+                Wir sind eine gemischte Gruppe von Erwachsenen, Frauen und Männer, bei uns im Sportverein ist es sehr freundschaftlich und familiär!
+              </p>
+
+              <p>
+                Leistungsdruck kennen wir nicht beim WAT- Neubau, Spaß am Spiel und an der Bewegung ist uns wichtig! Volleyball Grundkenntnisse werden vorausgesetzt.
+              </p>
+
+              <p>
+                <strong>Training:</strong>
+                Jeder Donnerstag (ausgenommen Schulferien und schulautonome Tage) von 19:00 - 21:00 Uhr
+              </p>
+
+              <a href="#contact">Kontaktiere uns →</a>
+            </div>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="history" id="history">
+      <div class="container history-container">
+        <span class="section-label">Geschichte</span>
+        <h2>Bewegte Geschichte.</h2>
+        <p>Der WAT Neubau entstand aus der Arbeiterturnbewegung und wurde am 20. Oktober 1902 als Allgemeiner Turnverein
+          Neubau gegründet. Nach den schwierigen Jahren des Ersten Weltkriegs entwickelte sich daraus 1919 der Wiener
+          Arbeiter Turnverein (WAT). Auch die politischen Umbrüche der Zwischenkriegszeit, das Verbot des Vereins 1934
+          und die Beschlagnahmung des Turnsaals durch die Nationalsozialisten 1938 stellten große Herausforderungen dar.
+          Nach dem Zweiten Weltkrieg wurde der Verein 1946 wieder aufgebaut und konnte seine sportlichen Aktivitäten
+          erneut aufnehmen. Trotz weiterer finanzieller und organisatorischer Schwierigkeiten blieb der WAT Neubau
+          bestehen und setzte seine Vereinsarbeit über die Jahrzehnte fort.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+
+        <div>
+          <span class="section-label">Say hello</span>
+
+          <h2>Let's get moving.</h2>
+
+          <p>
+            Interested in joining one of our groups?
+            Have a question? We'd love to hear from you.
+          </p>
+        </div>
+
+        <div class="contact-details">
+
+          <p>
+            <strong>Email</strong><br>
+            <a href="mailto:info@example.com">
+              info@example.com
+            </a>
+          </p>
+
+          <p>
+            <strong>Phone</strong><br>
+            <a href="tel:+43000000000">
+              +43 000 000 000
+            </a>
+          </p>
+
+          <p>
+            <strong>Address</strong><br>
+            Example Street 1<br>
+            1070 Vienna, Austria
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER / IMPRINT -->
+
+  <footer id="imprint">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>WAT Neubau</h3>
+
+          <p>
+            Sport brings people together.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+
+        <div>
+          <h3>Imprint</h3>
+
+          <p>
+            <strong>Organization:</strong> Example Sports Association
+            <br>
+            <strong>Address:</strong> Example Street 1,
+            1070 Vienna, Austria
+            <br>
+            <strong>Represented by:</strong> John Doe
+            <br>
+            <strong>Email:</strong>
+            <a href="mailto:info@example.com">
+              info@example.com
+            </a>
+            <br>
+            <strong>Registration number:</strong> XXXXXXX
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 WAT Neubau. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
