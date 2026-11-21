@@ -27,7 +27,9 @@
 
       const email = new TextDecoder().decode(bytes);
 
-      element.textContent = email;
+      if (element.textContent.trim() === 'Lade...') {
+        element.textContent = email;
+      }
 
       if (element.tagName === "A") {
         element.href = "mailto:" + email;
@@ -381,7 +383,7 @@
       font-size: 13px;
     }
 
-    details {
+    details summary {
       cursor: pointer;
     }
 
